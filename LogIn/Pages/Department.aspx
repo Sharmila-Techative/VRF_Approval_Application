@@ -14,7 +14,6 @@
         }
     </style>
     <div class="User">
-        <%--<asp:Image ID="imgProfile" runat="server" CssClass="imgProfile" />--%>
         <asp:Label ID="lblUserName" runat="server" CssClass="user-name-label"></asp:Label>
     </div>
     <div style="margin-top: 50px; margin-left: 10px;">

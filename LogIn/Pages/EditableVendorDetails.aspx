@@ -3,39 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <%-- <div>
-        <asp:GridView ID="gvUserDetails" AutoGenerateColumns="false" runat="server" DataKeyNames="GSTnO" CssClass="gvListDetails"  OnRowCommand="gvUserDetails_RowCommand">
-            <Columns>
-                <asp:BoundField DataField="TName" HeaderText="Trade Name" />
-                <asp:BoundField DataField="LName" HeaderText="Legal Name" />
-                <asp:BoundField DataField="Bstate" HeaderText="Business State" />
-                <asp:BoundField DataField="NatureOfBusinessActivity" HeaderText="Nature of Business Activity" />
-                <asp:BoundField DataField="GstNo" HeaderText="GST Number" />
-                <asp:BoundField DataField="DateOfEstablishment" HeaderText="Applied Date of the Vendor" />
-                <asp:TemplateField HeaderText="View">
-                    <ItemTemplate>
-                        <asp:ImageButton ID="btnView" runat="server" ImageUrl="~/images/View1.png"
-                            CommandName="View" CommandArgument="<%# Container.DataItemIndex %>"  ToolTip="View Details" Width="36px" Height="36px"
-                            Style="color: #B2BEB5; padding: 5px; border-radius: 3px;" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Approve">
-                    <ItemTemplate>
-                        <asp:ImageButton ID="btnApprove" runat="server" ImageUrl="~/images/Approval.jpg"
-                            CommandName="Approve" ToolTip="Approve" Width="36px" Height="36px"
-                            Style="padding: 5px; border-radius: 3px;" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Reject">
-                    <ItemTemplate>
-                        <asp:ImageButton ID="btnReject" runat="server" ImageUrl="~/images/Reject.jpg"
-                            CommandName="Reject" ToolTip="Reject" Width="36px" Height="36px"
-                            Style="color:black; padding: 5px; border-radius: 3px;" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-    </div>--%>
     <style>
         .ajax__tab_active,
         .ajax__tab_header .ajax__tab_active a,
