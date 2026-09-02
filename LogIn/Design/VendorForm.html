@@ -1,0 +1,665 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 5px;
+            font-size: 10.5px;
+            line-height: 1.1;
+        }
+
+        /* ✅ MINIMAL PAGE SPLIT FIX - NO DESIGN CHANGE */
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        .field-line {
+            page-break-inside: avoid;
+        }
+
+        .inline-fields {
+            page-break-inside: avoid;
+        }
+
+        /* ✅ FORCE CLEAN BREAK BEFORE ITEMS - No design change */
+        div.section-title:nth-of-type(6) { /* "19. Items Supplied" */
+            page-break-before: always;
+        }
+
+        /* ✅ Ensure content flows properly */
+        .readonly-field {
+            max-height: none;
+            overflow: visible;
+        }
+
+        .markdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+            .markdown-table td {
+                width: 50%;
+                vertical-align: top;
+                padding: 6px 20px 6px 0;
+            }
+
+            .markdown-table .field-line {
+                display: flex;
+                align-items: center;
+                margin: 0;
+            }
+
+            .markdown-table label {
+                width: 170px;
+                text-align: center;
+                line-height: 1.3;
+                font-weight: normal;
+            }
+
+            .markdown-table .readonly-field {
+                width: 100px;
+                border-bottom: 1px solid #000;
+                min-height: 16px;
+            }
+
+        .page {
+            width: 794px;
+            min-height: 1123px;
+            background: #fff;
+            border: 1px solid #000;
+            padding: 15px 28px 130px 28px;
+            margin: 0 auto;
+            position: relative;
+            box-sizing: border-box;
+            page-break-after: auto;
+        }
+
+        /* Logo box EXACT PDF size & 1px border */
+        .logo-box {
+            margin-top: 0px;
+            border: 2px solid #000;
+            width: 745px;
+            height: 95px;
+            margin: 0 auto 8px;
+            padding: 6px;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .logo {
+            width: 425px;
+            height: auto;
+            max-height: 75px;
+            display: block;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+            /* SINGLE LINE like PDF */
+            white-space: nowrap;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            margin: 0 0 20px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* First 4 fields - EXACT PDF positioning */
+        .ref-table {
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 10.5px;
+            table-layout: fixed;
+        }
+
+            .ref-table td {
+                width: 50%;
+                padding: 0;
+                vertical-align: top;
+            }
+
+                .ref-table td:first-child {
+                    padding-right: 15px;
+                }
+
+            .ref-table .field-line {
+                margin: 6px 0;
+                padding: 2px 0;
+            }
+
+        .field-line {
+            margin: 15px 0;
+            font-size: 10.5px;
+            display: flex;
+            align-items: center;
+        }
+
+            .field-line label {
+                font-weight: bold;
+                width: 155px;
+                flex-shrink: 0;
+                margin-right: 10px;
+            }
+
+        .readonly-field {
+            border-bottom: 1px solid #000;
+            flex: 1;
+            padding: 2px 4px;
+            min-height: 15px;
+            font-size: 10.5px;
+            max-width: 330px;
+        }
+
+        /* Same line fields */
+        .inline-fields {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+            .inline-fields .field-group {
+                width: 48%;
+                display: flex;
+                align-items: center;
+            }
+
+            .inline-fields label {
+                width: 80px;
+                margin-right: 8px;
+            }
+
+            .inline-fields .readonly-field {
+                width: 185px;
+            }
+
+        /* Remarks single box */
+        .remarks-section {
+            border: 1px solid #000;
+            padding: 18px;
+            margin: 25px 0 135px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .remarks-label {
+            font-weight: bold;
+            font-size: 10.5px;
+            margin-bottom: 22px;
+            display: block;
+        }
+
+        .remarks-field {
+            border-bottom: 1px solid #000;
+            min-height: 40px;
+            padding: 5px;
+            width: 100%;
+            font-size: 10.5px;
+            box-sizing: border-box;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-weight: bold;
+            padding: 5px 9px;
+            margin: 20px 0 12px;
+            font-size: 11.5px;
+            background: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Items section */
+        /*  .items-section {
+            margin: 12px 0 20px 0;
+            font-size: 10.5px;
+            line-height: 1.25;
+        }
+
+            .items-section strong {
+                font-weight: bold;
+            }*/
+
+        .items-section {
+            margin: 12px 0 20px 0;
+            font-size: 10.5px;
+            line-height: 1.25;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        /* each item box */
+        .item-box {
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        /* LARGE centered stamp box */
+        .stamp-box {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 535px;
+            height: 105px;
+            border: 2px solid #000;
+            text-align: center;
+            padding: 16px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .signature-text {
+            padding-top: 8px;
+            margin-top: 50px;
+            font-weight: bold;
+            font-size: 10.5px;
+        }
+
+        .right-align {
+            text-align: right;
+        }
+
+        .page .watermark {
+            position: absolute !important;
+            top: 30% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) rotate(-35deg) !important;
+            width: 90%;
+            text-align: center;
+            font-size: 160px;
+            font-weight: 700;
+            font-family: 'Arial Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            color: rgba(0, 0, 0, 0.18);
+            opacity: 0.25;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        .page * {
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            font-weight: bold;
+        }
+        /* Remove underline and extra spacing only for Remarks */
+        #Remarks.readonly-field {
+            border: none !important;
+            min-height: auto !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .readonly-field {
+            display: inline-block;
+            text-align: left;
+            width: 150px; /* optional, adjust as needed */
+        }
+
+        .field-line {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+            .field-line label {
+                width: 230px; /* keep labels aligned */
+                text-align: left;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="watermark" id="watermark">DRAFT</div>
+        <!-- Logo EXACT PDF size: 125px, 1px border, 145x55px box -->
+        <div class="logo-box">
+            <img src="../Images/Logo.png" alt="Logo" class="logo">
+        </div>
+
+        <!-- Header SINGLE LINE like PDF -->
+        <div class="header">
+            No. 7, Basudev Street, Pondy Bazaar, T. Nagar, Chennai – 600 017 Contact: 044 24340714
+        </div>
+
+        <h2>VENDOR REGISTRATION FORM</h2>
+
+        <!-- First 4 fields EXACT positioning -->
+        <table class="ref-table">
+            <tr>
+                <td>
+                    <div class="field-line">
+                        <label>Ref. No.:</label>
+                        <span class="readonly-field" id="ref_no"></span>
+                    </div>
+                    <div class="field-line">
+                        <label>CODE NO.:</label>
+                        <span class="readonly-field" id="code_no"></span>
+                    </div>
+                </td>
+                <td class="right-align">
+                    <div class="field-line">
+                        <label>Date:</label>
+                        <span class="readonly-field" id="form_date"></span>
+                    </div>
+                    <div class="field-line">
+                        <label>LOCATION:</label>
+                        <span class="readonly-field" id="location"></span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="field-line">
+            <label>1. Name of Vendor:</label>
+            <span class="readonly-field" id="vendor_name"></span>
+        </div>
+        <div class="field-line">
+            <label>2. Address:</label>
+            <span class="readonly-field" id="address"></span>
+        </div>
+        <div class="field-line">
+            <label>Registered Office:</label>
+            <span class="readonly-field" id="registered_office"></span>
+        </div>
+        <div class="field-line">
+            <label>3. Nature of Business:</label>
+            <span class="readonly-field" id="business"></span>
+        </div>
+
+        <!-- Contact numbers same line -->
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>4. Contact No. 1:</label>
+                <span class="readonly-field" id="contact1"></span>
+            </div>
+            <div class="field-group">
+                <label>Contact No. 2:</label>
+                <span class="readonly-field" id="contact2"></span>
+            </div>
+        </div>
+
+        <!-- Email same line -->
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>5. Email ID 1:</label>
+                <span class="readonly-field" id="email1"></span>
+            </div>
+            <div class="field-group">
+                <label>6. Email ID 2:</label>
+                <span class="readonly-field" id="email2"></span>
+            </div>
+        </div>
+
+        <!-- Proprietor + Phone SAME LINE -->
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>7. Name of Proprietor:</label>
+                <span class="readonly-field" id="proprietor"></span>
+            </div>
+            <div class="field-group">
+                <label>8. Phone No.:</label>
+                <span class="readonly-field" id="prop_phone"></span>
+            </div>
+        </div>
+
+        <div class="section-title">9. RTGS Details</div>
+        <div class="field-line">
+            <label>Name of Bank and Branch:</label>
+            <span class="readonly-field" id="bank_branch"></span>
+        </div>
+        <div class="field-line">
+            <label>A/c No.:</label>
+            <span class="readonly-field" id="account_no"></span>
+        </div>
+        <div class="field-line">
+            <label>IFSC Code:</label>
+            <span class="readonly-field" id="ifsc"></span>
+        </div>
+
+        <div class="field-line">
+            <label>10. Goods Return Address:</label>
+            <span class="readonly-field" id="return_address"></span>
+        </div>
+        <div class="section-title">11. Payment Days / Terms</div>
+
+        <div class="field-line">
+            <label>Days:</label>
+            <span class="readonly-field" id="days"></span>
+        </div>
+        <!--<div class="field-line">
+            <label>MarkDown %:</label>
+            <span class="readonly-field" id="markdown"></span>
+        </div>-->
+        <!--<div class="field-line">
+            <label>Mark Down % on MRP (With Tax @ 0%):</label>
+            <span class="readonly-field" id="md0_with"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (Without Tax @ 0%):</label>
+            <span class="readonly-field" id="md0_without"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (With Tax @ 3%):</label>
+            <span class="readonly-field" id="md3_with"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (Without Tax @ 3%):</label>
+            <span class="readonly-field" id="md3_without"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (With Tax @ 5%):</label>
+            <span class="readonly-field" id="md5_with"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (Without Tax @ 5%):</label>
+            <span class="readonly-field" id="md5_without"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (With Tax @ 18%):</label>
+            <span class="readonly-field" id="md18_with"></span>
+        </div>
+
+        <div class="field-line">
+            <label>Mark Down % on MRP (Without Tax @ 18%):</label>
+            <span class="readonly-field" id="md18_without"></span>
+        </div>-->
+
+        <table class="markdown-table">
+
+            <tr>
+                <td>
+                    <div class="field-line">
+                        <label>(1) Mark Down % on MRP<br>(With Tax @ 0%)</label>
+                        <span class="readonly-field" id="md0_with"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="field-line">
+                        <label>(2) Mark Down % on MRP<br>(Without Tax @ 0%)</label>
+                        <span class="readonly-field" id="md0_without"></span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="field-line">
+                        <label>(3) Mark Down % on MRP<br>(With Tax @ 3%)</label>
+                        <span class="readonly-field" id="md3_with"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="field-line">
+                        <label>(4) Mark Down % on MRP<br>(Without Tax @ 3%)</label>
+                        <span class="readonly-field" id="md3_without"></span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="field-line">
+                        <label>(5) Mark Down % on MRP<br>(With Tax @ 5%)</label>
+                        <span class="readonly-field" id="md5_with"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="field-line">
+                        <label>(6) Mark Down % on MRP<br>(Without Tax @ 5%)</label>
+                        <span class="readonly-field" id="md5_without"></span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="field-line">
+                        <label>(7) Mark Down % on MRP<br>(With Tax @ 18%)</label>
+                        <span class="readonly-field" id="md18_with"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="field-line">
+                        <label>(8) Mark Down % on MRP<br>(Without Tax @ 18%)</label>
+                        <span class="readonly-field" id="md18_without"></span>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+        <div class="field-line">
+            <label>Discount:</label>
+            <span class="readonly-field" id="discount"></span>
+        </div>
+
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>12. GST No.:</label>
+                <span class="readonly-field" id="gst"></span>
+            </div>
+            <div class="field-group">
+                <label>13. PAN No.:</label>
+                <span class="readonly-field" id="pan"></span>
+            </div>
+        </div>
+
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>14. MSME No.:</label>
+                <span class="readonly-field" id="msme"></span>
+            </div>
+            <div class="field-group">
+                <label>Date:</label>
+                <span class="readonly-field" id="msme_date"></span>
+            </div>
+        </div>
+        <div class="field-line">
+            <label>Major Activity:</label>
+            <span class="readonly-field" id="activity"></span>
+        </div>
+        <div class="field-line">
+            <label>Enterprise Type:</label>
+            <span class="readonly-field" id="enterprise"></span>
+        </div>
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>15. Legal Name:</label>
+                <span class="readonly-field" id="legal_name"></span>
+            </div>
+            <div class="field-group">
+                <label>16. Trade Name:</label>
+                <span class="readonly-field" id="trade_name"></span>
+            </div>
+        </div>
+        <div class="inline-fields">
+            <div class="field-group">
+                <label>17. Agency / Direct:</label>
+                <span class="readonly-field" id="agency_direct"></span>
+            </div>
+            <div class="field-group">
+                <label>18. Agency Email:</label>
+                <span class="readonly-field" id="agency_email"></span>
+            </div>
+        </div>
+        <div class="section-title">19. Items Supplied</div>
+        <div class="items-section" id="items_supplied"></div>
+
+        <div class="field-line">
+            <label>20. NHFS Contact Person:</label>
+            <span class="readonly-field" id="contact_person"></span>
+        </div>
+
+        <div class="remarks-section">
+            <div class="remarks-label">Remarks:</div>
+            <span class="readonly-field" id="Remarks"></span>
+        </div>
+        <div class="stamp-box">
+            <div class="signature-text">
+                (Signature with Rubber Stamp)<br />
+                AUTHORISED SIGNATORY
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var watermarkText = sessionStorage.getItem('WatermarkText') || "DRAFT";
+        document.getElementById('watermark').innerText = watermarkText;
+
+        var formData = JSON.parse(sessionStorage.getItem('PreviewData') || "{}");
+        for (var key in formData) {
+            if (document.getElementById(key)) {
+                document.getElementById(key).innerText = formData[key];
+            }
+        }
+
+        var goods = formData["Major goods and services Details With"] || [];
+        var itemsSection = document.getElementById('items_supplied');
+        var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+        for (var i = 0; i < goods.length; i++) {
+            itemsSection.innerHTML += `<div style="margin-bottom: 7px;"><strong>${letters[i]}) Product:</strong> ${goods[i]?.Product || ''}<br>
+                                                                                                                                              <strong>Brand:</strong> ${goods[i]?.Brand || ''}<br>
+                                                                                                                                              <strong>Size:</strong> ${goods[i]?.Size || ''}</div>`;
+        }
+    </script>
+    <script>
+        const date = new Date(); // or your date value
+        const formattedDate =
+            String(date.getDate()).padStart(2, '0') + '/' +
+            String(date.getMonth() + 1).padStart(2, '0') + '/' +
+            date.getFullYear();
+
+        document.getElementById('form_date').textContent = formattedDate;
+        document.getElementById('msme_date').textContent = formattedDate;
+    </script>
+
+</body>
+</html>
