@@ -32,7 +32,6 @@ namespace LogIn
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
         }
-
         public static void RegisterJQueryScriptManager()
         {
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery",

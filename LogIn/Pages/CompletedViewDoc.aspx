@@ -6,16 +6,13 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="../CSS/Sales.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-
     <style>
         .container {
             display: block;
         }
 
         .full-width-flex {
-            flex: 1; /* Makes the item take up the full available width */
+            flex: 1;
             background-color: #001f3f;
             padding: 10px;
             width: 100%;
@@ -39,7 +36,6 @@
         th, td {
             padding: 8px;
             text-align: left;
-            /* border: 1px solid #ddd;*/
         }
 
         .form-row {
@@ -59,13 +55,13 @@
                 }
 
         .label-container {
-            width: 30%; /* Adjust width as needed */
+            width: 30%;
             padding-right: 10px;
             text-align: right;
         }
 
         .input-container {
-            width: 70%; /* Adjust width as needed */
+            width: 70%;
             padding-left: 10px;
         }
 
@@ -108,9 +104,6 @@
                 transform: scale(0.98);
             }
 
-
-
-
         .home-logo {
             width: 50px;
             height: 50px;
@@ -130,7 +123,7 @@
         }
 
             .icon-button i {
-                color: #007bff; /* Change to your desired color */
+                color: #007bff;
             }
 
         .user-profile {
@@ -143,9 +136,9 @@
         }
 
         .user-logo {
-            width: 80px; /* Adjust the size */
+            width: 80px;
             height: 45px;
-            border-radius: 50%; /* Makes it circular */
+            border-radius: 50%;
         }
 
         .dropdown-arrow {
@@ -154,9 +147,9 @@
         }
 
         .dropdown-content {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
-            top: 50px; /* Adjust as needed */
+            top: 50px;
             right: 0;
             background-color: white;
             border: 1px solid #ddd;
@@ -193,7 +186,7 @@
         }
 
         .user-profile:hover .dropdown-content {
-            display: block; /* Show dropdown on hover */
+            display: block;
         }
 
         .username-label {
@@ -208,9 +201,9 @@
             font-size: 1.5em;
             font-weight: bold;
             color: #333;
-            top: 80px; /* Adjust this value as needed */
-            right: 20px; /* Change right to left for better placement */
-            position: fixed; /* Keeps it fixed in the viewport */
+            top: 80px;
+            right: 20px;
+            position: fixed;
         }
 
         .nav-button {
@@ -224,12 +217,12 @@
         }
 
         .prev-button {
-            background-color: #6c757d; /* Gray */
+            background-color: #6c757d;
             width: 100px;
         }
 
         .next-button {
-            background-color: #007bff; /* Blue */
+            background-color: #007bff;
             width: 100px;
         }
 
@@ -251,7 +244,6 @@
             position: relative;
         }
 
-            /* Watermark overlay */
             body::before {
                 content: "";
                 position: fixed;
@@ -260,13 +252,12 @@
                 width: 100%;
                 height: 100%;
                 background: url('../Images/Techative.png') no-repeat center center;
-                background-size: 400px; /* adjust watermark size */
-                opacity: 0.06; /* subtle watermark effect */
+                background-size: 400px;
+                opacity: 0.06;
                 z-index: 0;
-                pointer-events: none; /* let clicks go through */
+                pointer-events: none;
             }
-    </style>
-    <style>
+
         .custom-popup {
             position: fixed;
             top: 0;
@@ -276,7 +267,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.5); /* dim background */
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 9999;
         }
 
@@ -312,9 +303,9 @@
         }
 
         .custom-popup-body .form-group label {
-            width: 80%; /* Ensure labels have a fixed width */
-            text-align: right; /* Align the text to the right */
-            margin-right: 180px; /* Add some space between the label and input */
+            width: 80%;
+            text-align: right;
+            margin-right: 180px;
         }
 
         .SaveBtn {
@@ -399,27 +390,177 @@
             margin-bottom: 6px;
             margin-right: 30px;
         }
+
+        .thumb-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .thumb {
+            position: relative;
+            display: inline-block;
+        }
+
+            .thumb img {
+                width: 120px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 6px;
+                border: 1px solid #ddd;
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+
+                .thumb img:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                }
+
+        .full-view img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 6px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        .custom-modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .custom-modal-content {
+            background: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            width: 65%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+        }
+
+            .close-btn:hover {
+                color: #000;
+            }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal {
+            position: fixed !important;
+            z-index: 2000 !important;
+        }
+
+        .modal-backdrop {
+            z-index: 1050 !important;
+        }
     </style>
 
+    <script>
+        function openUploadPopup(btn) {
+            const row = btn.closest("tr");
+            const serialNo = row.querySelector("span[id*='lblSerialNo']").innerText.trim();
+            const product = row.querySelector("input[id*='txtProduct']")?.value?.trim() || "";
 
-    <script type="text/javascript">
+            document.getElementById("popupSerialNo").value = serialNo;
+            document.getElementById("popupProduct").value = product;
+            document.getElementById("previewContainer").innerHTML = "";
+
+            fetch(`UploadHandler.ashx?action=get&serialNo=${serialNo}&product=${product}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.files && data.files.length > 0) {
+                        renderThumbnails(data.files);
+                    } else {
+                        document.getElementById("previewContainer").innerHTML = "<p>No images found.</p>";
+                    }
+                });
+
+            document.getElementById("imageUploadModal").style.display = "block";
+        }
+
+        function closeUploadPopup() {
+            document.getElementById("imageUploadModal").style.display = "none";
+        }
+
+        function renderThumbnails(files) {
+            const container = document.getElementById("previewContainer");
+            container.innerHTML = "";
+
+            files.forEach(f => {
+                let wrapper = document.createElement("div");
+                wrapper.classList.add("thumb");
+
+                let img = document.createElement("img");
+                img.src = f.base64 || f;   // supports base64 string or image URL
+                img.onclick = () => showFullImage(img.src);
+
+                wrapper.appendChild(img);
+                container.appendChild(wrapper);
+            });
+        }
+
+        function showFullImage(url) {
+            const imgElement = document.getElementById("fullImageView");
+            imgElement.src = url;
+            document.getElementById("fullImageModal").style.display = "block";
+        }
+
+        function closeFullImage() {
+            document.getElementById("fullImageModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("imageUploadModal"))
+                closeUploadPopup();
+            if (event.target == document.getElementById("fullImageModal"))
+                closeFullImage();
+        };
+        function openApproveModalPage() {
+            // clear any previous remarks
+            document.getElementById('<%= txtRemarksPage.ClientID %>').value = '';
+            // open modal
+            var myModal = new bootstrap.Modal(document.getElementById('approveModalPage'));
+            myModal.show();
+        }
         document.addEventListener("keydown", function (e) {
             var activeElement = document.activeElement;
-
-            // Ignore key presses if focus is in input, textarea, or select
             if (activeElement && (activeElement.tagName === "INPUT" ||
                 activeElement.tagName === "TEXTAREA" ||
                 activeElement.tagName === "SELECT")) {
                 return;
             }
-
-            // Left Arrow → trigger Previous button
             if (e.key === "ArrowLeft" || e.keyCode === 37) {
                 var prevBtn = document.querySelector("input[type=submit][value='Previous'], button.prev-button");
                 if (prevBtn) prevBtn.click();
             }
-
-            // Right Arrow → trigger Next button
             if (e.key === "ArrowRight" || e.keyCode === 39) {
                 var nextBtn = document.querySelector("input[type=submit][value='Next'], button.next-button");
                 if (nextBtn) nextBtn.click();
@@ -433,7 +574,6 @@
                 console.error('Popup element not found.');
             }
         }
-
         function closePopup() {
             const popup = document.getElementById('BankDetailspopup');
             if (popup) {
@@ -442,16 +582,12 @@
                 console.error('Popup element not found.');
             }
         }
-        // Function to show the popup
         function showPopup() {
             document.getElementById("BankDetailspopup").style.display = "block";
         }
-
-        // Function to close the popup
         function closePopup() {
             document.getElementById("BankDetailspopup").style.display = "none";
         }
-
     </script>
 
     <div class="powered-by" style="position: fixed; bottom: 10px; right: 10px; color: black; font-size: 13px; opacity: 0.7; display: flex; align-items: center; gap: 6px;">
@@ -474,7 +610,6 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Sl. No." ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="center-header">
                             <ItemTemplate>
-                                <%--  <%# Container.DataItemIndex + 1 %>--%>
                                 <asp:Label ID="lblSerialNo" runat="server" Style="display: block; text-align: center;" Text='<%# Container.DataItemIndex + 1 %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -487,34 +622,25 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Upload" HeaderStyle-CssClass="center-header">
                             <ItemTemplate>
-                                <%-- <asp:FileUpload ID="fileUpload1" runat="server"
-                                    onchange='<%# string.Format("__doPostBack(this.name, \"{0}\"); return validateFileExtension(this);", Eval("DocumentType").ToString()) %>' />--%>
-
-
                                 <asp:Label ID="lblFileName" runat="server" ForeColor="Green" Font-Italic="true" />
-
                                 <asp:Label ID="DocumentName" runat="server">DocName</asp:Label>
-                                <%-- <Span ID="DocumentName" runat="server" ReadOnly="true">Content</Span>--%>
                                 <p class="note">Accepted documents are .jpg, .pdf</p>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnView" runat="server" CommandName="ViewFile" CommandArgument='<%# Eval("DocumentType") %>' OnClick="btnView_Click" CssClass="icon-button">
-<i class="fas fa-eye"></i>
+                                    <i class="fas fa-eye"></i>
                                 </asp:LinkButton>
 
                                 <asp:LinkButton ID="btnDownload" runat="server" CommandName="DownloadFile" CommandArgument='<%# Eval("DocumentType") %>' OnClick="btnDownload_Click" CssClass="icon-button">
-<i class="fas fa-download"></i>
+                                    <i class="fas fa-download"></i>
                                 </asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
-
             </div>
-
         </div>
         <asp:Panel ID="Panel1" runat="server" Style="margin-top: 10px; text-align: right;">
             <asp:Button ID="Button5" runat="server" Text="Previous" OnClick="btnPrevious_Click"
@@ -525,17 +651,14 @@
         <div style="position: fixed; bottom: 10px; left: 20px; color: black; font-size: 13px; opacity: 0.7;">
             <p><strong>Page: 1</strong></p>
         </div>
-
     </asp:Panel>
     <asp:Panel ID="pnlPage2" runat="server">
         <div class="full-width-flex1" style="margin-top: 0px !important;">
             <div class="full-width-flex" style="text-align: center">
                 <strong>Business Partner Information</strong>
             </div>
-
         </div>
         <div>
-
             <table>
                 <tr class="form-row">
                     <td class="label-container">
@@ -570,22 +693,6 @@
                     </td>
                 </tr>
                 <tr class="form-row">
-                    <%--  <td class="label-container">
-                        <label for="partnerType">Partner Type<span style="color: red;">*</span></label>
-                    </td>
-                    <td class="input-container">
-                        <asp:DropDownList ID="ddpartnertype" runat="server" Style="width: 200px; border-top: none; border-left: none; border-right: none;">
-                            <asp:ListItem Text="Select Type" Value="Select Type"></asp:ListItem>
-                            <asp:ListItem Text="Vendor" Value="Vendor"></asp:ListItem>
-                            <asp:ListItem Text="Customer" Value="Customer"></asp:ListItem>
-                        </asp:DropDownList>
-                    </td>--%>
-                    <%-- <td class="label-container">
-                        <label for="tradeName">Trade Name<span style="color: red;">*</span></label>
-                    </td>
-                    <td class="input-container">
-                        <asp:TextBox ID="tradeName" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
-                    </td>--%>
                 </tr>
 
 
@@ -597,13 +704,8 @@
                         <asp:TextBox ID="registeredOfficeAddress1" runat="server" Placeholder="Address1" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                         <asp:TextBox ID="registeredOfficeAddress2" runat="server" Placeholder="Address2" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                         <asp:TextBox ID="registeredOfficeAddress3" runat="server" Placeholder="Address3" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
-
-                        <!-- Registered Office Country Dropdown -->
                         <asp:TextBox ID="registeredOfficeCountry" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;">
                         </asp:TextBox><br>
-
-                        <!-- Registered Office State Dropdown -->
-
                         <asp:TextBox ID="registeredOfficeState" runat="server" CssClass="full-width"
                             Style="width: 200px; border-top: none; border-left: none; border-right: none;">
                         </asp:TextBox>
@@ -620,13 +722,8 @@
                         <asp:TextBox ID="goodsReturnAddress1" runat="server" Placeholder="Address1" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                         <asp:TextBox ID="goodsReturnAddress2" runat="server" Placeholder="Address2" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                         <asp:TextBox ID="goodsReturnAddress3" runat="server" Placeholder="Address3" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
-
-                        <!-- Registered Office Country Dropdown -->
                         <asp:TextBox ID="goodsReturnCountry" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;">
                         </asp:TextBox><br>
-
-                        <!-- Registered Office State Dropdown -->
-
                         <asp:TextBox ID="goodsReturnState" runat="server" CssClass="full-width"
                             Style="width: 200px; border-top: none; border-left: none; border-right: none;">
                         </asp:TextBox>
@@ -634,8 +731,6 @@
                         <asp:TextBox ID="goodsReturnZipcode" runat="server" Placeholder="PinCode" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
 
                     </td>
-
-
                     <td class="label-container">
                         <label for="businessBillingAddress1">Business / Billing Address<span style="color: red;">*</span></label>
                     </td>
@@ -643,14 +738,8 @@
                         <asp:TextBox ID="businessBillingAddress1" runat="server" Placeholder="Address1" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                         <asp:TextBox ID="businessBillingAddress2" runat="server" Placeholder="Address2" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                         <asp:TextBox ID="businessBillingAddress3" runat="server" Placeholder="Address3" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
-
-                        <!-- Business Billing Country Dropdown -->
-
                         <asp:TextBox ID="businessBillingCountry" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;">
                         </asp:TextBox><br>
-                        <!-- Business Billing State Dropdown -->
-
-
                         <asp:TextBox ID="businessBillingState" runat="server" CssClass="full-width"
                             Style="width: 200px; border-top: none; border-left: none; border-right: none;">
                         </asp:TextBox>
@@ -658,7 +747,6 @@
                         <asp:TextBox ID="businessBillingZipCode" runat="server" Placeholder="PinCode" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox><br>
                     </td>
                 </tr>
-
                 <tr class="form-row">
                     <td class="label-container">
                         <label for="tradeName">Trade Name<span style="color: red;">*</span></label>
@@ -679,9 +767,7 @@
                         <asp:TextBox ID="dateOfEstablishment" runat="server" TextMode="Date" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;" ReadOnly="true"></asp:TextBox>
                     </td>
                 </tr>
-
                 <tr class="form-row">
-
                     <td class="label-container">
                         <label for="contactPersonName">Contact Person Name<span style="color: red;"></span></label>
                     </td>
@@ -703,17 +789,10 @@
                 </tr>
 
                 <tr class="form-row">
-                    <%-- <td class="label-container">
-                        <label for="emailId">E-Mail ID<span style="color: red;">*</span></label>
-                    </td>--%>
-                    <%-- <td class="input-container" colspan="3">
-                        <asp:TextBox ID="emailId" runat="server" TextMode="Email" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
-                    </td>--%>
                     <td class="label-container">
                         <label for="mobileNo">Mobile No<span style="color: red;">*</span></label>
                     </td>
                     <td class="input-container">
-
                         <asp:TextBox
                             ID="mobileNo"
                             runat="server"
@@ -736,11 +815,6 @@
                         <asp:TextBox ID="tanNo" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
                     </td>
                 </tr>
-
-
-
-
-
             </table>
         </div>
         <asp:Panel ID="Panel2" runat="server" Style="margin-top: 10px; text-align: right;">
@@ -777,20 +851,16 @@
                     <td class="input-container">
                         <asp:TextBox ID="MSMENO" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
                     </td>
-
                 </tr>
                 <tr class="form-row">
                     <td class="label-container">
                         <label for="ddlEnterpriseType">Enterprise Type</label>
                     </td>
-
                     <td class="input-container">
                         <asp:TextBox ID="ddlEnterpriseType" runat="server" CssClass="full-width" Style="width: 255px; border-top: none; border-left: none; border-right: none;">
-                           
                         </asp:TextBox>
                     </td>
                     <td class="label-container"></td>
-
                     <td class="input-container"></td>
                 </tr>
                 <tr class="form-row" style="margin-left: 20px; background-color: #001f3f; align-content: center">
@@ -818,7 +888,6 @@
                         </asp:TextBox>
                     </td>
                 </tr>
-
                 <tr class="form-row">
                     <td class="label-container">
                         <label for="Payment1" style="">
@@ -883,27 +952,6 @@
                     </td>
 
                 </tr>
-                <%-- <tr class="form-row">
-                    <td class="label-container">
-                        <label for="Payment7" style="">
-                            Mark Down % on MRP<br>
-                            (with Tax @ 12%)<span style="color: red;"></span></label>
-                    </td>
-                    <td class="input-container">
-                        <asp:TextBox ID="Payment7" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
-                    </td>
-                    <td class="label-container">
-                        <label for="Payment8">
-                            Mark Down % on MRP
-             <br>
-                            (with out Tax @ 12%</label>
-                    </td>
-
-                    <td class="input-container">
-                        <asp:TextBox ID="Payment8" runat="server" CssClass="full-width" Style="width: 200px; border-top: none; border-left: none; border-right: none;"></asp:TextBox>
-                    </td>
-
-                </tr>--%>
                 <tr class="form-row">
                     <td class="label-container">
                         <label for="Payment9" style="">
@@ -1088,7 +1136,6 @@
             </table>
         </div>
         <div class="full-width-flex11">
-            <%-- <h3 style="margin-left: 340px;">Business Partner Registration Form</h3>--%>
         </div>
 
         <div style="margin-left: 20px">
@@ -1146,9 +1193,7 @@
 
                         </Columns>
                     </asp:GridView>
-                    <%--  <asp:LinkButton ID="lnkaddRow_Click" runat="server" ForeColor="Green" OnClick="lnknewrowadd_Click" OnClientClick="saveScrollPosition();">
-            <img src="../Images/PlusIcon.png" style="width:18px;" />
-                </asp:LinkButton>--%>
+
                     <asp:HiddenField ID="HiddenScrollPosition" runat="server" />
                 </div>
             </div>
@@ -1187,11 +1232,6 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Contact_No" HeaderStyle-CssClass="center-header">
                                 <ItemTemplate>
-                                    <%--                                <asp:TextBox ID="partnerContactNo" runat="server" Style="width: 240px; border-top: none; border-left: none; border-right: none"></asp:TextBox>--%>
-                                    <%--<asp:CustomValidator ID="cvMobileNo1" runat="server"
-                                    ErrorMessage="Mobile number must be exactly 10 digits."
-                                    ClientValidationFunction="validateMobileNumber"
-                                    Display="Dynamic" ForeColor="Red"></asp:CustomValidator>--%>
                                     <asp:TextBox
                                         ID="partnerContactNo"
                                         runat="server"
@@ -1207,20 +1247,10 @@
                                     <asp:TextBox ID="partnerEmail" runat="server" TextMode="Email" Style="width: 200px; border-top: none; border-left: none; border-right: none" ReadOnly="true"></asp:TextBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <%--<asp:TemplateField>
-                                <%--  <ItemTemplate>
-                        <asp:LinkButton ID="lnkDelete" CommandArgument='<%# Container.DataItemIndex %>' runat="server" OnClick="lnkDelete_Click" ForeColor="Red">
-                            <i class="fa fa-close"></i>
-                        </asp:LinkButton>--%>
-                            <%--                    </ItemTemplate>--%>
-                            <%--</asp:TemplateField>>--%>
                         </Columns>
                     </asp:GridView>
 
                     <asp:HiddenField ID="HiddenField4" runat="server" />
-                    <%--<asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkaddrow_Click" ForeColor="Green">
-            <img src="../Images/PlusIcon.png" style="width:18px;" />
-        </asp:LinkButton>--%>
                 </div>
             </div>
         </div>
@@ -1241,37 +1271,6 @@
 
         <div class="sal-grid">
             <div style="overflow: auto; overflow-x: hidden;">
-                <%--<asp:GridView ID="gvOperationalContacts" runat="server" AutoGenerateColumns="false" CssClass="table table-responsive" ShowHeaderWhenEmpty="true">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Department">
-                            <ItemTemplate>
-                                
-                                <asp:Label ID="lblDepartment" runat="server" Text='<%# Eval("Department") %>'></asp:Label>
-
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Name">
-                            <ItemTemplate>
-                                <asp:TextBox ID="pocName" runat="server" Style="width: 230px; border-top: none; border-left: none; border-right: none"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Designation">
-                            <ItemTemplate>
-                                <asp:TextBox ID="pocDesignation" runat="server" Style="width: 230px; border-top: none; border-left: none; border-right: none"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Contact No.">
-                            <ItemTemplate>
-                                <asp:TextBox ID="pocContactNo" runat="server" Style="width: 200px; border-top: none; border-left: none; border-right: none"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Email-ID">
-                            <ItemTemplate>
-                                <asp:TextBox ID="pocEmail" runat="server" TextMode="Email" Style="width: 240px; border-top: none; border-left: none; border-right: none"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>--%>
                 <asp:GridView ID="gvOperationalContacts" runat="server" AutoGenerateColumns="false" CssClass="table table-responsive" ShowHeaderWhenEmpty="true" OnRowDataBound="gvOperationalContacts_RowDataBound">
                     <Columns>
                         <asp:TemplateField HeaderText="Department" HeaderStyle-CssClass="center-header">
@@ -1291,13 +1290,6 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Contact No." HeaderStyle-CssClass="center-header">
                             <ItemTemplate>
-                                <%--<asp:TextBox ID="pocContactNo" runat="server" Style="width: 200px; border-top: none; border-left: none; border-right: none"></asp:TextBox>
-                                <asp:CustomValidator ID="cvMobileNo2" runat="server"
-                                    ErrorMessage="Mobile number must be exactly 10 digits."
-                                    ClientValidationFunction="validateMobileNumber"
-                                    Display="Dynamic" ForeColor="Red">
-</asp:CustomValidator>--%>
-
                                 <asp:TextBox
                                     ID="pocContactNo"
                                     runat="server"
@@ -1305,7 +1297,6 @@
                                     onblur="validatePocContactNo(this)"
                                     placeholder="Enter 10-digit mobile number">
                                 </asp:TextBox>
-
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Email-ID" HeaderStyle-CssClass="center-header">
@@ -1315,13 +1306,10 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
-
             </div>
         </div>
 
         <h5>Major goods & services Dealt With </h5>
-
         <div class="sal-grid">
             <div style="overflow: auto; overflow-x: hidden;">
                 <asp:GridView ID="gvMajorGoods" runat="server" AutoGenerateColumns="false" CssClass="table table-responsive" ShowHeaderWhenEmpty="true" OnRowDataBound="gvMajorGoods_RowDataBound">
@@ -1376,9 +1364,6 @@
                 </asp:GridView>
 
                 <asp:HiddenField ID="HiddenField3" runat="server" />
-                <%--<asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkAddRow_Click" ForeColor="Green">
-            <img src="../Images/PlusIcon.png" style="width:18px;" /> Add Row
-        </asp:LinkButton>--%>
             </div>
         </div>
         <asp:Panel ID="Panel4" runat="server" Style="margin-top: 10px; text-align: right;">
@@ -1402,7 +1387,6 @@
                     <HeaderStyle Width="10%" HorizontalAlign="Center" />
                     <ItemTemplate>
                         <asp:Label ID="lblSerialNo" runat="server" Style="display: block; text-align: center;" Text='<%# Container.DataItemIndex + 1 %>' />
-                        <%-- <%# Container.DataItemIndex + 1 %>--%>
                         <asp:HiddenField ID="HiddenField22" runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -1425,30 +1409,6 @@
 
         <h5>Other Information</h5>
         <div class="sal-grid">
-            <%--<div style="overflow: auto; overflow-x: hidden;">
-                <asp:GridView ID="gvOtherInformation" runat="server" AutoGenerateColumns="false" CssClass="table table-responsive" ShowHeaderWhenEmpty="true">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Sl. No.">
-                            <ItemTemplate>
-                                <%# Container.DataItemIndex + 1 %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Description">
-                            <ItemTemplate>
-                                
-                                <asp:Label ID="lblDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
-
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Value">
-                            <ItemTemplate>
-                                <asp:TextBox ID="txtValue" runat="server" Style="width: 540px; border-top: none; border-left: none; border-right: none"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-
-            </div>--%>
             <asp:GridView ID="gvOtherInformation" runat="server" AutoGenerateColumns="false" CssClass="table table-responsive" ShowHeaderWhenEmpty="true" OnRowDataBound="gvOtherInformation_RowDataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="Sl. No." HeaderStyle-CssClass="center-header">
@@ -1519,16 +1479,11 @@
             ToolTip="Approve" Width="100px" Height="36px"
             Style="padding: 5px; border-radius: 3px; background-color: green; color: white; border: none; cursor: pointer; visibility: hidden;" Visible="false"
             OnClientClick="openApproveModalPage(); return false;" />
-        <%--OnClick="ApproveVendor"--%>
         <asp:Button ID="btnReject" runat="server" Text="Reject"
             ToolTip="Reject" Width="100px" Height="36px"
             OnClick="Reject"
             OnClientClick="BankDetailspopup(); return false;"
             Style="padding: 5px; border-radius: 3px; background-color: #f44336; color: white; border: none; cursor: pointer; visibility: hidden;" Visible="false" />
-        <%--<asp:Button ID="btnReject" runat="server" Text="Reject"
-            ToolTip="Reject" Width="100px" Height="36px"
-            OnClientClick="showRejectModal(); return false;"
-            Style="padding: 5px; border-radius: 3px; background-color: #f44336; color: white; border: none; cursor: pointer;" />--%>
         <asp:Button ID="btnDraftApproved" runat="server" Text="Approve"
             ToolTip="DraftApproved" Width="100px" Height="36px"
             OnClick="DraftApproved"
@@ -1544,25 +1499,19 @@
 
     <div id="BankDetailspopup" class="custom-popup" style="display: none;">
         <div class="custom-popup-content modern-popup">
-            <!-- Header -->
             <div class="custom-popup-header">
                 <h4 class="popup-title">Reason</h4>
                 <span class="close-popup" onclick="closePopup1()">&times;</span>
             </div>
 
-            <!-- Body -->
             <div class="custom-popup-body">
-                <!-- Reason TextBox -->
                 <asp:TextBox
                     ID="popuptext"
                     runat="server"
                     CssClass="popup-textbox"
                     placeholder="Enter your reason here">
                 </asp:TextBox>
-
-                <!-- GST Recreate Dropdown -->
                 <div class="form-group">
-                    <%--<label for="ddlGstRecreate" class="popup-label">Is this GST allowed to be recreated?</label>--%>
                     <label for="ddlGstRecreate" class="popup-label nowrap-text left-align">
                         Is this GST allowed to be recreated?
                     </label>
@@ -1575,8 +1524,6 @@
                         <asp:ListItem Text="No" Value="No" />
                     </asp:DropDownList>
                 </div>
-
-                <!-- Action Button -->
                 <div class="popup-actions">
                     <asp:Button
                         ID="SubmitButton1"
@@ -1588,8 +1535,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Image Upload Modal: View Only -->
     <div id="imageUploadModal" class="custom-modal">
         <div class="custom-modal-content">
             <span class="close-btn" onclick="closeUploadPopup()">&times;</span>
@@ -1601,16 +1546,12 @@
             <div id="previewContainer" class="thumb-container"></div>
         </div>
     </div>
-
-    <!-- Full Image Preview Modal -->
     <div id="fullImageModal" class="custom-modal">
         <div class="custom-modal-content full-view">
             <span class="close-btn" onclick="closeFullImage()">&times;</span>
             <img id="fullImageView" src="" />
         </div>
     </div>
-
-    <!-- Approval Remarks Modal -->
     <div class="modal fade" id="approveModalPage" tabindex="-1" aria-labelledby="approveModalLabelPage" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1632,167 +1573,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .thumb-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .thumb {
-            position: relative;
-            display: inline-block;
-        }
-
-            .thumb img {
-                width: 120px;
-                height: 100px;
-                object-fit: cover;
-                border-radius: 6px;
-                border: 1px solid #ddd;
-                cursor: pointer;
-                transition: transform 0.2s;
-            }
-
-                .thumb img:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-                }
-
-        .full-view img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 6px;
-            box-shadow: 0 0 10px #000;
-        }
-
-        .custom-modal {
-            display: none;
-            position: fixed;
-            z-index: 1050;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-        }
-
-        .custom-modal-content {
-            background: #fff;
-            margin: 5% auto;
-            padding: 20px;
-            width: 65%;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
-            position: relative;
-            animation: fadeIn 0.3s ease-in-out;
-            text-align: center;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 15px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #666;
-        }
-
-            .close-btn:hover {
-                color: #000;
-            }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal {
-            position: fixed !important;
-            z-index: 2000 !important;
-        }
-
-        .modal-backdrop {
-            z-index: 1050 !important;
-        }
-    </style>
-    <script>
-        function openUploadPopup(btn) {
-            const row = btn.closest("tr");
-            const serialNo = row.querySelector("span[id*='lblSerialNo']").innerText.trim();
-            const product = row.querySelector("input[id*='txtProduct']")?.value?.trim() || "";
-
-            document.getElementById("popupSerialNo").value = serialNo;
-            document.getElementById("popupProduct").value = product;
-            document.getElementById("previewContainer").innerHTML = "";
-
-            fetch(`UploadHandler.ashx?action=get&serialNo=${serialNo}&product=${product}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data.files && data.files.length > 0) {
-                        renderThumbnails(data.files);
-                    } else {
-                        document.getElementById("previewContainer").innerHTML = "<p>No images found.</p>";
-                    }
-                });
-
-            document.getElementById("imageUploadModal").style.display = "block";
-        }
-
-        function closeUploadPopup() {
-            document.getElementById("imageUploadModal").style.display = "none";
-        }
-
-        function renderThumbnails(files) {
-            const container = document.getElementById("previewContainer");
-            container.innerHTML = "";
-
-            files.forEach(f => {
-                let wrapper = document.createElement("div");
-                wrapper.classList.add("thumb");
-
-                let img = document.createElement("img");
-                img.src = f.base64 || f;   // supports base64 string or image URL
-                img.onclick = () => showFullImage(img.src);
-
-                wrapper.appendChild(img);
-                container.appendChild(wrapper);
-            });
-        }
-
-        function showFullImage(url) {
-            const imgElement = document.getElementById("fullImageView");
-            imgElement.src = url;
-            document.getElementById("fullImageModal").style.display = "block";
-        }
-
-        function closeFullImage() {
-            document.getElementById("fullImageModal").style.display = "none";
-        }
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById("imageUploadModal"))
-                closeUploadPopup();
-            if (event.target == document.getElementById("fullImageModal"))
-                closeFullImage();
-        };
-        function openApproveModalPage() {
-            // clear any previous remarks
-            document.getElementById('<%= txtRemarksPage.ClientID %>').value = '';
-            // open modal
-            var myModal = new bootstrap.Modal(document.getElementById('approveModalPage'));
-            myModal.show();
-        }
-    </script>
-
-
 </asp:Content>
